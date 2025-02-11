@@ -1,0 +1,40 @@
+.message-list-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 16px;
+  font-family: Arial, sans-serif;
+}
+
+.message-list-container .message-list-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.message-list-container .message-list {
+  list-style: none;
+  padding: 0;
+}
+
+.message-list-container .message-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: #f9f9f9;
+}
+
+.message-list-container .message-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.message-list-container .message-nickname {
+  flex: 1;
+  font-size: 16px;
+  font-weight: bold;
+}

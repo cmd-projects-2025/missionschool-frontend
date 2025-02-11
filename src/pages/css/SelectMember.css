@@ -1,0 +1,44 @@
+.select-container .select-container {
+  width: 90%;
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.select-container h2 {
+  margin-bottom: 20px;
+}
+
+.select-container .school-select,
+.area-select {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.select-container select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.select-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.select-container td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.select-container .selection-result {
+  margin: 20px 0;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 4px;
+}

@@ -1,0 +1,27 @@
+.board-table {
+  text-align: center;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.board-table th,
+.board-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.board-table th {
+  background-color: #f4f4f4;
+}
+
+.board-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+@media (max-width: 600px) {
+  .board-table {
+    font-size: 14px;
+  }
+}

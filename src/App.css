@@ -1,0 +1,8 @@
+.App {
+  width: 500px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column; /* flex의 방향 */
+  gap: 10px; /* 요소들 간의 간격 */
+}
