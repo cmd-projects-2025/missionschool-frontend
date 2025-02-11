@@ -1,0 +1,50 @@
+.mypage-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 16px;
+  font-family: Arial, sans-serif;
+}
+
+.profile-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+  margin-bottom: 16px;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+
+.nickname {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.posts-section {
+  padding: 12px;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-list li {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}

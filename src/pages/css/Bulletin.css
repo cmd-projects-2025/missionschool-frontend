@@ -1,0 +1,105 @@
+/* 컨테이너 스타일 */
+.Bulletin .bulletin-container {
+  padding: 20px;
+}
+
+/* 헤더 스타일 */
+.Bulletin .bulletin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.Bulletin .bulletin-header input {
+  flex: 1;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.Bulletin .bulletin-header button {
+  margin-right: 10px;
+}
+
+/* 게시글 리스트 스타일 */
+.Bulletin .post-list {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+/* 게시글 카드 스타일 */
+.Bulletin .post-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 프로필 이미지 스타일 */
+.Bulletin .profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #000;
+}
+
+/* 게시글 정보 스타일 */
+.Bulletin .post-info {
+  display: flex;
+  align-items: center;
+}
+
+.Bulletin .title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.Bulletin .price {
+  font-size: 14px;
+  color: gray;
+}
+
+/* 별점 및 날짜 컨테이너 */
+.Bulletin .rating-container {
+  width: 100px;
+  text-align: right;
+}
+
+.Bulletin .rating {
+  font-size: 18px;
+  color: #f5a623;
+}
+
+.Bulletin .date {
+  font-size: 12px;
+  color: gray;
+  margin-top: 5px;
+}
+
+/* 페이지네이션 스타일 */
+.Bulletin .pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.Bulletin .pagination button {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.Bulletin .pagination button.active {
+  background: #757575;
+  color: white;
+  border: none;
+}

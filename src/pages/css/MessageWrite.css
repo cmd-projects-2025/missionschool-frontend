@@ -1,0 +1,90 @@
+/* MessageWrite.css */
+
+.MessageWrite-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.MessageWrite-container .profile {
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+
+  width: 100%;
+  max-width: 150px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.MessageWrite-container .profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.MessageWrite-container .MessageWriteInner {
+  width: 100%;
+  max-width: 350px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.MessageWrite-container .MessageWrite-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.MessageWrite-container .MessageWrite-content {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.MessageWrite-container .note-section {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.MessageWrite-container .note-input {
+  width: 90%;
+  height: 150px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+.MessageWrite-container .send-button {
+  margin-top: 10px;
+}
+
+.MessageWrite-containerbutton {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.MessageWrite-containerbutton :hover {
+  background-color: #45a049;
+}
+
+.MessageWrite-containerbutton :active {
+  background-color: #3e8e41;
+}

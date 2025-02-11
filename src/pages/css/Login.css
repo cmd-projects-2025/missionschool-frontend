@@ -1,0 +1,53 @@
+.login-container {
+  width: 100%;
+  max-width: 350px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.options {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.links {
+  margin-top: 15px;
+}
+
+.links a {
+  text-decoration: none;
+  color: black;
+}
+
+.login-btn {
+  width: 100%;
+}
+.login-container .Button {
+  width: 100%;
+}

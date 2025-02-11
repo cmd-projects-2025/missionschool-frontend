@@ -1,0 +1,70 @@
+.Join-container {
+  width: 100%;
+  max-width: 350px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.Join-container h2 {
+  margin-bottom: 20px;
+}
+
+.Join-container .input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.Join-container .input-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.Join-container .input-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.Join-container .terms {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.Join-container .Join-container .Button_submit {
+  width: 100%;
+}
+
+.Join-container .terms-btn {
+  cursor: pointer;
+}
+/* 이용약관 팝업 */
+.Join-container .terms-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Join-container .terms-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 300px;
+}
+
+.Join-container .terms-content h3 {
+  margin-bottom: 10px;
+}

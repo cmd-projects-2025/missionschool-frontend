@@ -1,0 +1,48 @@
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px 0px;
+  border-bottom: 1px solid rgb(226, 226, 226);
+}
+.Header .header_right h2 {
+  cursor: pointer;
+}
+.Header .header_left {
+  display: flex;
+  align-items: center;
+}
+.Header .header_left button {
+  margin-right: 5px;
+}
+
+.notification-container {
+  position: relative;
+  display: inline-block;
+  font-size: 24px;
+  cursor: pointer;
+}
+.notification-icon {
+  font-size: 30px;
+}
+.notification-badge {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  background: red;
+  color: white;
+  font-size: 14px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(50%, -50%);
+}
+
+.messageImg {
+  width: 40px;
+  cursor: pointer;
+}
