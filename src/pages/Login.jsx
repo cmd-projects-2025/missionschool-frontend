@@ -3,6 +3,7 @@ import "./css/Login.css";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/footer";
 
 const Login = () => {
   const [id, setId] = useState("");
@@ -65,13 +66,20 @@ const Login = () => {
           </div>
 
           <Button text="로그인" type="submit" onClick={handleSave} />
-
+          <br />
+          <br />
+          <Button
+            onClick={() => nav("/Join")}
+            text={"회원가입"}
+            type="primary"
+          />
           <div className="links">
             <a href="/FindId">아이디 찾기</a> |{" "}
             <a href="/FindPassword">비밀번호 찾기</a>
           </div>
         </form>
       </div>
+      <Footer />
     </>
   );
 };

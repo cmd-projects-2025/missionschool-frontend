@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import Hot from "../components/Hot";
 import BoardHome from "../components/BoardHome";
+import Footer from "../components/footer";
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <Header />
       <Hot />
       <BoardHome />
+      <Footer />
     </div>
   );
 };

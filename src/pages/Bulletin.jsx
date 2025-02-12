@@ -3,6 +3,7 @@ import "./css/Bulletin.css";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/footer";
 
 // Utility function to manage profile images
 import { getProfileImage } from "../util/get-profile-image";
@@ -11,14 +12,14 @@ const Bulletin = () => {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("date");
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 2;
+  const postsPerPage = 5;
 
   const posts = [
     {
       id: 1,
       profileId: 1,
       rating: "★★★",
-      title: "글",
+      title: "첫 번째 글",
       date: "11.09",
       price: "3,900원",
     },
@@ -26,7 +27,7 @@ const Bulletin = () => {
       id: 2,
       profileId: 2,
       rating: "★★",
-      title: "글",
+      title: "두 번째 글",
       date: "11.08",
       price: "10,000원",
     },
@@ -34,7 +35,7 @@ const Bulletin = () => {
       id: 3,
       profileId: 3,
       rating: "★★★★",
-      title: "글",
+      title: "세 번째 글",
       date: "10.09",
       price: "-",
     },
@@ -42,7 +43,31 @@ const Bulletin = () => {
       id: 4,
       profileId: 4,
       rating: "★",
-      title: "글",
+      title: "네 번째 글",
+      date: "9.23",
+      price: "-",
+    },
+    {
+      id: 5,
+      profileId: 3,
+      rating: "★",
+      title: "다섯 번째 글",
+      date: "9.23",
+      price: "-",
+    },
+    {
+      id: 6,
+      profileId: 2,
+      rating: "★",
+      title: "여섯 번째 글",
+      date: "9.23",
+      price: "-",
+    },
+    {
+      id: 7,
+      profileId: 1,
+      rating: "★",
+      title: "일곱 번째 글",
       date: "9.23",
       price: "-",
     },
@@ -81,6 +106,7 @@ const Bulletin = () => {
           <Button
             onClick={() => setSortBy(sortBy === "date" ? "price" : "date")}
             text={`정렬: ${sortBy === "date" ? "날짜" : "가격"}`}
+            type="primary"
           />
           <Button
             className="write-btn"
@@ -130,6 +156,7 @@ const Bulletin = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Footer from "../components/footer";
 
 const Write = () => {
   const nav = useNavigate();
@@ -36,10 +37,11 @@ const Write = () => {
               onClick={() => nav(-1)}
               text="뒤로가기"
             />
-            <Button onClick={() => nav("/View")} text="완료" />
+            <Button onClick={() => nav("/View")} text="완료" type="success" />
           </div>
         </form>
       </div>
+      <Footer />
     </div>
   );
 };

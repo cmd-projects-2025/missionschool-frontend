@@ -5,38 +5,34 @@ import { useNavigate } from "react-router-dom";
 const Board = () => {
   const posts = [
     {
-      id: 1,
-      title: "첫 번째 게시글",
+      id: 5,
+      title: "다섯 번째 게시글",
       author: "유지현",
-      date: "2024-02-06",
+      price: 2000,
+    },
+
+    {
+      id: 4,
+      title: "네 번째 게시글",
+      author: "유지현",
+      price: 2000,
+    },
+    {
+      id: 3,
+      title: "세 번째 게시글",
+      author: "홍길동",
       price: 2000,
     },
     {
       id: 2,
       title: "두 번째 게시글",
       author: "관리자",
-      date: "2024-02-05",
       price: 1000,
     },
     {
-      id: 3,
-      title: "세 번째 게시글",
-      author: "홍길동",
-      date: "2024-02-04",
-      price: 2000,
-    },
-    {
-      id: 4,
-      title: "네 번째 게시글",
+      id: 1,
+      title: "첫 번째 게시글",
       author: "유지현",
-      date: "2024-02-03",
-      price: 2000,
-    },
-    {
-      id: 5,
-      title: "다섯 번째 게시글",
-      author: "유지현",
-      date: "2024-02-02",
       price: 2000,
     },
   ];
@@ -50,7 +46,6 @@ const Board = () => {
             <th>번호</th>
             <th>제목</th>
             <th>작성자</th>
-            <th>날짜</th>
             <th>가격</th>
           </tr>
         </thead>
@@ -60,7 +55,6 @@ const Board = () => {
               <td>{post.id}</td>
               <td>{post.title}</td>
               <td>{post.author}</td>
-              <td>{post.date}</td>
               <td>{post.price}</td>
             </tr>
           ))}

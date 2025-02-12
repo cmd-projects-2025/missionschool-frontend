@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import { getProfileImage } from "../util/get-profile-image";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/footer";
 
 const MessageWrite = () => {
   const nav = useNavigate();
@@ -40,6 +41,7 @@ const MessageWrite = () => {
           <div className="send-button">
             <Button
               text="쪽지 보내기"
+              type="success"
               onClick={() => {
                 alert("쪽지가 전송되었습니다!");
                 nav("/MessageView");
@@ -48,6 +50,7 @@ const MessageWrite = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import "./css/View.css";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
+import Footer from "../components/footer";
 
 import { getProfileImage } from "../util/get-profile-image";
 
@@ -72,6 +73,7 @@ const View = () => {
             className="send-button"
             text="쪽지 보내기"
             onClick={() => nav("/MessageWrite")}
+            type="success"
           />
         </div>
 
@@ -132,6 +134,7 @@ const View = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };
