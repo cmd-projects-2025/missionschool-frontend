@@ -3,6 +3,7 @@ import "./css/findId.css";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/footer";
 
 const FindId = () => {
   const [Phonenumber, setPhonenumber] = useState("");
@@ -57,6 +58,7 @@ const FindId = () => {
           <Button type="submit" className="findId-btn" text="아이디 찾기" />
         </form>
       </div>
+      <Footer />
     </div>
   );
 };

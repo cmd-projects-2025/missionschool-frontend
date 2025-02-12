@@ -1,0 +1,28 @@
+.Footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 50px;/
+}
+
+.Footer_content {
+  margin: 0 auto;
+}
+
+.Footer nav {
+  margin-top: 10px;
+}
+
+.Footer nav a {
+  color: #bbb;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.Footer nav a:hover {
+  color: white;
+}

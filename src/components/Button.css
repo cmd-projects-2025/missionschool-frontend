@@ -1,8 +1,55 @@
 .Button {
-  background-color: rgb(236, 236, 236);
   cursor: pointer;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
   white-space: nowrap;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+/* 기본 버튼 */
+.Button_default {
+  background-color: rgb(236, 236, 236);
+  color: black;
+}
+
+/* 주요 버튼 */
+.Button_primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.Button_primary:hover {
+  background-color: #0056b3;
+}
+
+/* 보조 버튼 */
+.Button_secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.Button_secondary:hover {
+  background-color: #545b62;
+}
+
+/* 성공 버튼 */
+.Button_success {
+  background-color: #28a745;
+  color: white;
+}
+
+.Button_success:hover {
+  background-color: #1e7e34;
+}
+
+/* 위험 버튼 */
+.Button_danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.Button_danger:hover {
+  background-color: #bd2130;
 }

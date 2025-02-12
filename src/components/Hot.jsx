@@ -1,57 +1,67 @@
-import { useState, useRef } from "react";
-import Button from "./Button";
 import "./Hot.css";
+import { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
+
+const posts = [
+  {
+    title: "첫 번째 글",
+    content: "이것은 첫 번째 글입니다.",
+    price: "10,000원",
+  },
+  {
+    title: "두 번째 글",
+    content: "이것은 두 번째 글입니다.",
+    price: "20,000원",
+  },
+  {
+    title: "세 번째 글",
+    content: "이것은 세 번째 글입니다.",
+    price: "30,000원",
+  },
+  {
+    title: "네 번째 글",
+    content: "이것은 네 번째 글입니다.",
+    price: "40,000원",
+  },
+  {
+    title: "다섯 번째 글",
+    content: "이것은 다섯 번째 글입니다.",
+    price: "50,000원",
+  },
+];
 
 const Hot = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const sliderRef = useRef(null);
+  const [width, setWidth] = useState(0);
 
-  const totalSlides = 5; // 슬라이드 개수
-  const slideWidth = 400; // 슬라이드 하나의 너비
-
-  const updateSlidePosition = () => {
+  useEffect(() => {
     if (sliderRef.current) {
-      sliderRef.current.style.transform = `translateX(${
-        -currentIndex * slideWidth
-      }px)`;
+      setWidth(sliderRef.current.scrollWidth - sliderRef.current.offsetWidth);
     }
-  };
-
-  const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
-  const nextSlide = () => {
-    if (currentIndex < totalSlides - 1) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
-
+  }, []);
+  const nav = useNavigate();
   return (
     <div className="Hot">
       <h2>급구</h2>
       <div className="slider-container">
-        <div
-          className="slider"
+        <motion.div
           ref={sliderRef}
-          style={{
-            transform: `translateX(${-currentIndex * slideWidth}px)`,
-            transition: "transform 0.5s ease-in-out",
-          }}
+          className="slider"
+          drag="x"
+          dragConstraints={{ right: 0, left: -width }}
         >
-          <div className="slide">1</div>
-          <div className="slide">2</div>
-          <div className="slide">3</div>
-          <div className="slide">4</div>
-          <div className="slide">5</div>
-        </div>
-      </div>
-
-      <div className="buttons">
-        <Button onClick={prevSlide} text={"이전"} />
-        <Button onClick={nextSlide} text={"다음"} />
+          {posts.map((post, index) => (
+            <div className="slide" key={index}>
+              <h3>{post.title}</h3>
+              <p>{post.content}</p>
+              <span>{post.price}</span>
+              <br />
+              <Button onClick={() => nav("/Bulletin")} text="글보기" />
+            </div>
+          ))}
+        </motion.div>
       </div>
     </div>
   );

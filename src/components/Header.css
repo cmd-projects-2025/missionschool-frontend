@@ -1,18 +1,29 @@
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 .Header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 10px 0px;
   border-bottom: 1px solid rgb(226, 226, 226);
+  height: 60px;
 }
+
 .Header .header_right h2 {
   cursor: pointer;
 }
+
 .Header .header_left {
   display: flex;
   align-items: center;
 }
+
 .Header .header_left button {
   margin-right: 5px;
 }
@@ -23,9 +34,11 @@
   font-size: 24px;
   cursor: pointer;
 }
+
 .notification-icon {
   font-size: 30px;
 }
+
 .notification-badge {
   position: absolute;
   top: 0;
@@ -45,4 +58,40 @@
 .messageImg {
   width: 40px;
   cursor: pointer;
+}
+
+/* 슬라이드 메뉴 */
+.slide-menu {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  width: 300px;
+  height: calc(
+    100vh - 60px
+  ); /* 화면 전체 높이에서 헤더 높이를 뺀 높이로 설정 */
+  background-color: #fff;
+  border-left: 2px solid #ddd;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 9999;
+}
+
+.slide-menu.active {
+  transform: translateX(0);
+}
+
+.slide-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.slide-menu li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.slide-menu li:last-child {
+  border-bottom: none;
 }

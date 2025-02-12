@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { getProfileImage } from "../util/get-profile-image";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/footer";
 
 const messages = [
   { id: 1, nickname: "User1", profile: getProfileImage(1) },
@@ -35,6 +36,7 @@ const MessageList = () => {
           ))}
         </ul>
       </div>
+      <Footer />
     </div>
   );
 };

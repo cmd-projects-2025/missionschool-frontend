@@ -2,6 +2,7 @@ import "./css/EditProfile.css";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
+import Footer from "../components/footer";
 
 const EditProfile = () => {
   const nav = useNavigate();
@@ -44,6 +45,7 @@ const EditProfile = () => {
           />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

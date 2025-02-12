@@ -4,6 +4,7 @@ import "./css/SelectMember.css";
 import Button from "../components/Button";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/footer";
 
 const Join = () => {
   const [email, setEmail] = useState("");
@@ -126,7 +127,7 @@ const Join = () => {
 
               {/* 완료 버튼 */}
               <div className="submit-container">
-                <Button type="submit" className="Join-btn" text="가입하기" />
+                <Button type="success" className="Join-btn" text="가입하기" />
               </div>
 
               {/* 이용약관 팝업 */}
@@ -196,7 +197,7 @@ const Join = () => {
             {/* 선택 완료 버튼 */}
             <div className="submit-container">
               <Button
-                type="button"
+                type="success"
                 className="Join-btn"
                 text="선택 완료"
                 onClick={() => nav("/Login")}
@@ -205,6 +206,7 @@ const Join = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };
