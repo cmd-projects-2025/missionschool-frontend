@@ -37,11 +37,12 @@ const EditProfile = () => {
           <input type="password" placeholder="새 비밀번호 입력" />
         </div>
         <div className="button-group">
-          <Button text="저장" onClick={handleSave} />
+          <Button text="저장" onClick={handleSave} type="success" />
           <Button
             text="회원 탈퇴"
             onClick={handleDeleteAccount}
             className="delete-btn"
+            type="danger"
           />
         </div>
       </div>
