@@ -20,12 +20,12 @@ const Write = () => {
             <input type="text" id="title" name="title" required />
           </div>
           <div className="form-group">
-            <label htmlFor="price">가격</label>
-            <input type="number" id="price" name="price" required />
-          </div>
-          <div className="form-group">
             <label htmlFor="content">내용</label>
             <textarea id="content" name="content" rows="4" required></textarea>
+          </div>
+          <div className="form-group">
+            <label htmlFor="price">가격</label>
+            <input type="number" id="price" name="price" required />
           </div>
           <div className="form-group checkbox">
             <label htmlFor="urgent">급구[1000원]</label>
