@@ -1,5 +1,5 @@
 .edit-profile-container {
-  max-width: 400px;
+  max-width: 300px;
   margin: 0 auto;
   padding: 16px;
   font-family: Arial, sans-serif;
@@ -21,7 +21,7 @@
 }
 
 .edit-profile-container .form-group input {
-  width: 100%;
+  width: 95%;
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;

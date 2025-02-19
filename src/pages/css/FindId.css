@@ -1,6 +1,6 @@
 .FindId .findId-container {
   width: 90%;
-  max-width: 400px;
+  max-width: 250px;
   margin: 30px auto;
   padding: 20px;
   border: 1px solid #ddd;
@@ -19,7 +19,7 @@
 }
 
 .FindId input {
-  width: 100%;
+  width: 95%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
