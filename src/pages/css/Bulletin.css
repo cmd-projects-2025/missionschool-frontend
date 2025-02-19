@@ -8,6 +8,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 15px;
 }
 
@@ -58,6 +60,8 @@
   font-size: 16px;
   font-weight: bold;
   margin-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .Bulletin .price {
