@@ -27,8 +27,16 @@ const MessageView = () => {
                 onClick={() => nav(-1)}
                 text="뒤로가기"
               />
-              <Button text="쪽지함 가기" onClick={() => nav("/MessageList")} />
-              <Button text="쪽지 쓰기" onClick={() => nav("/MessageWrite")} />
+              <Button
+                text="쪽지함 가기"
+                type="primary"
+                onClick={() => nav("/MessageList")}
+              />
+              <Button
+                text="쪽지 쓰기"
+                type="success"
+                onClick={() => nav("/MessageWrite")}
+              />
             </div>
           </div>
         </div>
