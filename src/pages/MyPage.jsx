@@ -7,6 +7,12 @@ import Footer from "../components/footer";
 
 const MyPage = () => {
   const nav = useNavigate();
+  const handleDeleteAccount = () => {
+    if (window.confirm("정말 탈퇴하시겠습니까?")) {
+      alert("회원 탈퇴가 완료되었습니다.");
+      nav("/");
+    }
+  };
   return (
     <div>
       <Header />
@@ -32,6 +38,15 @@ const MyPage = () => {
             <li>글 제목 3</li>
           </ul>
         </div>
+      </div>
+      <div className="posts-section buttonSection">
+        <div></div>
+        <Button
+          text="회원 탈퇴"
+          onClick={handleDeleteAccount}
+          className="delete-btn"
+          type="danger"
+        />
       </div>
       <Footer />
     </div>

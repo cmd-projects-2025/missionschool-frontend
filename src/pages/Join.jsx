@@ -10,6 +10,7 @@ const Join = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
+  const [name, setName] = useState("");
   const [Phonenumber, setPhonenumber] = useState("");
   const [agree, setAgree] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
@@ -37,7 +38,9 @@ const Join = () => {
     }
 
     // 회원가입 완료 후, 회원 선택 부분 표시
-    alert(`회원가입 완료!\n이메일: ${email}\n닉네임: ${nickname}`);
+    alert(
+      `회원가입 완료!\n이메일: ${email}\n닉네임: ${nickname}\n이름: ${name}`
+    );
     setIsJoined(true); // 회원가입 완료 상태로 설정
   };
 
@@ -61,8 +64,9 @@ const Join = () => {
             <h2>회원가입</h2>
             <form onSubmit={handleJoin}>
               {/* 회원가입 정보 입력 */}
+
               <div className="input-group">
-                <label htmlFor="email">이메일</label>
+                <label htmlFor="email">아이디(이메일)</label>
                 <input
                   type="email"
                   id="email"
@@ -180,18 +184,6 @@ const Join = () => {
                   ))}
                 </tbody>
               </table>
-            </div>
-
-            {/* 선택 결과 */}
-            <div className="selection-result">
-              <h3>선택한 항목</h3>
-              <p>학교: {selectedSchool || "선택 안 함"}</p>
-              <p>
-                동네:{" "}
-                {selectedAreas.length > 0
-                  ? selectedAreas.join(", ")
-                  : "선택 안 함"}
-              </p>
             </div>
 
             {/* 선택 완료 버튼 */}
