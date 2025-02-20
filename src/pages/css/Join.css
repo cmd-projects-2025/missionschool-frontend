@@ -37,7 +37,7 @@
   justify-content: space-between;
   margin-bottom: 15px;
 }
-.Join-container .Join-container .Button_submit {
+.Join-container .Button_success {
   width: 100%;
 }
 
@@ -67,4 +67,9 @@
 
 .Join-container .terms-content h3 {
   margin-bottom: 10px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
 }

@@ -48,3 +48,9 @@
   border-bottom: 1px solid #ddd;
   cursor: pointer;
 }
+
+.buttonSection {
+  display: flex;
+  justify-content: space-between;
+  padding: 28px;
+}
