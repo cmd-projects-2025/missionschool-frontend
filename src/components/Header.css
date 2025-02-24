@@ -59,7 +59,8 @@ body {
   transform: translate(50%, -50%);
 }
 
-.messageImg {
+.messageImg,
+.profile-image {
   width: 40px;
   cursor: pointer;
 }
