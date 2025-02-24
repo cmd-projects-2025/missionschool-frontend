@@ -38,8 +38,8 @@ const Board = () => {
   ];
   const nav = useNavigate();
   return (
-    <div className="board-container" onClick={() => nav("/Bulletin")}>
-      <h2>게시판</h2>
+    <div className="board-container">
+      <h2 onClick={() => nav("/Bulletin")}>게시판</h2>
       <table className="board-table">
         <thead>
           <tr>
@@ -51,7 +51,7 @@ const Board = () => {
         </thead>
         <tbody>
           {posts.map((post) => (
-            <tr key={post.id}>
+            <tr key={post.id} onClick={() => nav("/View")}>
               <td>{post.id}</td>
               <td>{post.title}</td>
               <td>{post.author}</td>

@@ -3,9 +3,11 @@ import "./Header.css";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import message from "../assets/message.png";
+import { getProfileImage } from "../util/get-profile-image";
 
 const Header = () => {
   const [isSlideMenuActive, setIsSlideMenuActive] = useState(false);
+  const [profileId, setProfileId] = useState(1);
   const nav = useNavigate();
 
   const toggleSlideMenu = () => {
@@ -19,20 +21,26 @@ const Header = () => {
       </div>
       <div className="header_left">
         <Button onClick={() => nav("/Login")} text={"로그인"} />
-        <Button onClick={() => nav("/MyPage")} text={"마이페이지"} />
+        <img
+          src={getProfileImage(profileId)}
+          alt="프로필"
+          className="profile-image"
+          title="프로필"
+          onClick={() => nav("/MyPage")}
+        />
         <img
           src={message}
           className="messageImg"
           onClick={() => nav("/MessageList")}
         />
-        <div className="notification-container">
+        {/* <div className="notification-container">
           <span className="notification-icon" onClick={toggleSlideMenu}>
             🔔
           </span>
           <span id="notification-badge" className="notification-badge">
             0
           </span>
-        </div>
+        </div> */}
       </div>
 
       {/* 슬라이드 메뉴 */}

@@ -30,6 +30,11 @@ const posts = [
     content: "이것은 다섯 번째 글입니다.",
     price: "50,000원",
   },
+  {
+    title: "여섯 번째 글",
+    content: "이것은 여섯 번째 글입니다.",
+    price: "50,000원",
+  },
 ];
 
 const Hot = () => {
