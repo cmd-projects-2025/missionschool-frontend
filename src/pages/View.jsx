@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import Footer from "../components/footer";
 
 import { getProfileImage } from "../util/get-profile-image";
+import { div } from "framer-motion/client";
 
 const View = () => {
   const [title, setTitle] = useState("게시글 제목");
@@ -75,6 +76,12 @@ const View = () => {
             onClick={() => nav("/MessageWrite")}
             type="success"
           />
+          {/* <Button
+            className="send-button"
+            text="수정하기"
+            onClick={() => nav("/Write")}
+            type="success"
+          /> */}
         </div>
 
         {/* 프로필 모달 */}

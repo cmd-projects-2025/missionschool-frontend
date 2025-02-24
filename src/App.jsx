@@ -15,6 +15,7 @@ import MessageWrite from "./pages/MessageWrite";
 import MessageList from "./pages/MessageList";
 import MessageView from "./pages/MessageView";
 import EditProfile from "./pages/EditProfile";
+import Update from "./pages/Update";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/MessageList" element={<MessageList />} />
         <Route path="/MessageView" element={<MessageView />} />
         <Route path="/EditProfile" element={<EditProfile />} />
+        <Route path="/Update" element={<Update />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
     </>

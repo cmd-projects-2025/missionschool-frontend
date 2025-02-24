@@ -32,7 +32,7 @@ const MyPage = () => {
         </div>
         <div className="posts-section">
           <h3>내가 쓴 글</h3>
-          <ul className="post-list" onClick={() => nav("/View")}>
+          <ul className="post-list" onClick={() => nav("/Update")}>
             <li>글 제목 1</li>
             <li>글 제목 2</li>
             <li>글 제목 3</li>
