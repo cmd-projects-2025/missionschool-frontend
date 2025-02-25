@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "../api/axiosInstance";
 import Button from "../components/Button";
 import Footer from "../components/footer";
 import Header from "../components/Header";
@@ -7,11 +8,11 @@ import "./css/Join.css";
 import "./css/SelectMember.css";
 
 const Join = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
   const [name, setName] = useState("");
-  const [Phonenumber, setPhonenumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [agree, setAgree] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
 
@@ -23,8 +24,14 @@ const Join = () => {
   const schools = ["학교 1", "학교 2", "학교 3"];
   const areas = ["동네 1", "동네 2", "동네 3", "동네 4"];
 
-  const handleJoin = (e) => {
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const nav = useNavigate();
+
+  const handleJoin = async (e) => {
     e.preventDefault();
+    setErrorMessage("");
+
     if (!agree) {
       alert("이용약관에 동의해야 회원가입이 가능합니다.");
       return;
@@ -32,16 +39,30 @@ const Join = () => {
 
     // 전화번호 형식 검사
     const phonePattern = /^[0-9]{3}-[0-9]{3,4}-[0-9]{4}$/;
-    if (!phonePattern.test(Phonenumber)) {
+    if (!phonePattern.test(phoneNumber)) {
       alert("전화번호 형식이 올바르지 않습니다. 올바른 형식: 010-1234-5678");
       return;
     }
 
-    // 회원가입 완료 후, 회원 선택 부분 표시
-    alert(
-      `회원가입 완료!\n이메일: ${email}\n닉네임: ${nickname}\n이름: ${name}`
-    );
-    setIsJoined(true); // 회원가입 완료 상태로 설정
+    try {
+      const response = await axios.post("/api/user/signup", {
+        username,
+        password,
+        nickname,
+        phoneNumber,
+      });
+
+      if (response.status === 200) {
+        alert("회원가입 성공! 회원 선택 페이지로 이동합니다.");
+        setIsJoined(true);
+      }
+    } catch (error) {
+      if (error.response) {
+        setErrorMessage("회원가입 실패: " + error.response.data.message);
+      } else {
+        setErrorMessage("서버와 연결할 수 없습니다.");
+      }
+    }
   };
 
   const handleAreaChange = (area) => {
@@ -49,8 +70,6 @@ const Join = () => {
       prev.includes(area) ? prev.filter((a) => a !== area) : [...prev, area]
     );
   };
-
-  const nav = useNavigate();
 
   const handleCloseTerms = () => setShowTerms(false);
 
@@ -66,12 +85,12 @@ const Join = () => {
               {/* 회원가입 정보 입력 */}
 
               <div className="input-group">
-                <label htmlFor="email">아이디(이메일)</label>
+                <label htmlFor="username">아이디(이메일)</label>
                 <input
                   type="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  id="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   required
                 />
               </div>
@@ -99,12 +118,12 @@ const Join = () => {
               </div>
 
               <div className="input-group">
-                <label htmlFor="Phonenumber">전화번호</label>
+                <label htmlFor="phoneNumber">전화번호</label>
                 <input
                   type="text"
-                  id="Phonenumber"
-                  value={Phonenumber}
-                  onChange={(e) => setPhonenumber(e.target.value)}
+                  id="phoneNumber"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
                   placeholder="010-1234-5678"
                   required
                 />
