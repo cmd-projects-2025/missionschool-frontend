@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../api/axiosInstance";
 import Button from "../components/Button";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import "./css/Login.css";
 
@@ -21,9 +21,22 @@ const Login = () => {
     try {
       const response = await axios.post(
         "/api/user/login",
-        { username: id, password: password },
-        { withCredentials: true }
+        { username: id, password: password }
       );
+
+      // 응답 헤더 전체 출력
+      console.log("응답 헤더:", response.headers);
+
+      const token = response.headers["authorization"]?.replace("Bearer ", "");
+      if (!token) {
+        throw new Error("토큰을 받지 못했습니다.");
+      }
+
+      if (rememberMe) {
+        localStorage.setItem("jwt", token);
+      } else {
+        sessionStorage.setItem("jwt", token);
+      }
 
       if (response.status === 200) {
         alert("로그인 성공!");
@@ -34,17 +47,19 @@ const Login = () => {
         if (error.response.status === 401) {
           setErrorMessage("아이디 또는 비밀번호가 잘못되었습니다.");
         } else {
-          setErrorMessage("로그인 중 오류가 발생했습니다.");
+          setErrorMessage(`로그인 중 오류가 발생했습니다: ${error.response.status}`);
         }
-      } else {
+      } else if (error.request) {
         setErrorMessage("서버와 연결할 수 없습니다.");
+      } else {
+        setErrorMessage(`로그인 요청 중 오류: ${error.message}`);
       }
     }
   };
 
   return (
     <>
-      <Header/>
+      <Header />
       <div className="login-container">
         <h2>로그인</h2>
         <form onSubmit={handleLogin}>
@@ -81,20 +96,19 @@ const Login = () => {
             </label>
           </div>
 
-          <Button text="로그인" type="submit"/>
+          <Button text="로그인" type="submit" />
 
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
 
-          <br/>
-          <br/>
-          <Button onClick={() => navigate("/Join")} text={"회원가입"} type="primary"/>
+          <br />
+          <br />
+          <Button onClick={() => navigate("/Join")} text={"회원가입"} type="primary" />
           <div className="links">
-            <a href="/FindId">아이디 찾기</a> |{" "}
-            <a href="/FindPassword">비밀번호 찾기</a>
+            <a href="/FindId">아이디 찾기</a> | <a href="/FindPassword">비밀번호 찾기</a>
           </div>
         </form>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
