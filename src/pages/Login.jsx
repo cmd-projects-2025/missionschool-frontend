@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./css/Login.css";
-import Header from "../components/Header";
-import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/footer";
 import axios from "../api/axiosInstance";
+import Button from "../components/Button";
+import Footer from "../components/footer";
+import Header from "../components/Header";
+import "./css/Login.css";
 
 const Login = () => {
   const [id, setId] = useState("");
@@ -19,10 +19,11 @@ const Login = () => {
     setErrorMessage("");
 
     try {
-      const response = await axios.post("/api/user/login", {
-        email: id,
-        password: password,
-      });
+      const response = await axios.post(
+        "/api/user/login",
+        { email: id, password: password },
+        { withCredentials: true }
+      );
 
       if (response.status === 200) {
         alert("로그인 성공!");
