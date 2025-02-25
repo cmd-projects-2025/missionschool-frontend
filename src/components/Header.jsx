@@ -13,12 +13,11 @@ const Header = () => {
   const nav = useNavigate();
 
   useEffect(() => {
-    // JWT 기반 로그인 상태 확인
     const checkLoginStatus = async () => {
       const token = localStorage.getItem("jwt") || sessionStorage.getItem("jwt");
       if (token) {
         try {
-          const response = await axios.get("/api/user/status"); // JWT를 헤더에 자동 포함 (axiosInstance 설정)
+          const response = await axios.get("/api/user/status");
           if (response.status === 200) {
             setIsLoggedIn(true);
           }
@@ -37,7 +36,8 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("/api/user/logout"); // 서버 로그아웃 API 호출 (선택적)
+      // 서버 요청은 선택적이므로 주석 처리 가능
+      await axios.put("/api/user/logout");
       localStorage.removeItem("jwt");
       sessionStorage.removeItem("jwt");
       setIsLoggedIn(false);
@@ -78,7 +78,6 @@ const Header = () => {
         />
       </div>
 
-      {/* 슬라이드 메뉴 */}
       <div className={`slide-menu ${isSlideMenuActive ? "active" : ""}`}>
         <ul>
           <li>
