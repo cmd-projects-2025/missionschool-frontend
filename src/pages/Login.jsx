@@ -21,7 +21,7 @@ const Login = () => {
     try {
       const response = await axios.post(
         "/api/user/login",
-        { email: id, password: password },
+        { username: id, password: password },
         { withCredentials: true }
       );
 
