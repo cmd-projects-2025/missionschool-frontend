@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import "./css/View.css";
-import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import Footer from "../components/footer";
+import Header from "../components/Header";
+import "./css/View.css";
 
 import { getProfileImage } from "../util/get-profile-image";
-import { div } from "framer-motion/client";
 
 const View = () => {
   const [title, setTitle] = useState("게시글 제목");

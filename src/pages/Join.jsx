@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
+import Footer from "../components/footer";
+import Header from "../components/Header";
 import "./css/Join.css";
 import "./css/SelectMember.css";
-import Button from "../components/Button";
-import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
-import Footer from "../components/footer";
 
 const Join = () => {
   const [email, setEmail] = useState("");

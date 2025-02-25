@@ -1,9 +1,9 @@
-import "./css/Join.css";
-import Header from "../components/Header";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import Footer from "../components/footer";
-import React, { useState } from "react";
+import Header from "../components/Header";
+import "./css/Join.css";
 
 const EditProfile = () => {
   const nav = useNavigate();

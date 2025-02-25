@@ -1,9 +1,9 @@
-import "./css/Write.css";
-import Header from "../components/Header";
-import Button from "../components/Button";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 import Footer from "../components/footer";
+import Header from "../components/Header";
+import "./css/Write.css";
 
 const Update = () => {
   const nav = useNavigate();

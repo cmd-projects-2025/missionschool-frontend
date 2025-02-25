@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./css/findPassword.css";
-import Header from "../components/Header";
 import Button from "../components/Button";
+import Header from "../components/Header";
+import "./css/findPassword.css";
 
 const FindPassword = () => {
   const [email, setEmail] = useState("");

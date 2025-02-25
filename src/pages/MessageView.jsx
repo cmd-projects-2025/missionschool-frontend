@@ -1,8 +1,8 @@
-import "./css/MessageView.css";
-import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import Footer from "../components/footer";
+import Header from "../components/Header";
+import "./css/MessageView.css";
 
 const MessageView = () => {
   const nav = useNavigate();

@@ -1,9 +1,9 @@
-import "./css/MyPage.css";
-import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
-import { getProfileImage } from "../util/get-profile-image";
 import Footer from "../components/footer";
+import Header from "../components/Header";
+import { getProfileImage } from "../util/get-profile-image";
+import "./css/MyPage.css";
 
 const MyPage = () => {
   const nav = useNavigate();
