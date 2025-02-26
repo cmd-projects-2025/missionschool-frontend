@@ -1,22 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../api/axiosInstance";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { useAuth } from "../hooks/useAuth";
 import "./css/Write.css";
 
 const Write = () => {
   const nav = useNavigate();
-  
-  // 폼 데이터 상태 관리
+  const { isLoggedIn, user } = useAuth();
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     price: "",
     urgent: false,
-    writerId: "testUser" // 임시로 하드코딩
+    writerId: "",
   });
+
+  useEffect(() => {
+    console.log("Write useEffect - isLoggedIn:", isLoggedIn, "user:", user);
+    if (!isLoggedIn) {
+      nav("/login");
+      return;
+    }
+    if (user && !formData.writerId) { // 한 번만 설정
+      setFormData((prev) => ({
+        ...prev,
+        writerId: user.username || "unknown",
+      }));
+    }
+  }, [isLoggedIn, user, nav, formData.writerId]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -26,14 +40,19 @@ const Write = () => {
     });
   };
 
-  // 폼 제출 핸들러
   const handleSubmit = async (e) => {
-    e.preventDefault(); // 기본 폼 제출 방지
-
+    e.preventDefault();
+    const token = localStorage.getItem("jwt") || sessionStorage.getItem("jwt");
+    if (!token || !isLoggedIn) {
+      alert("로그인이 필요합니다.");
+      nav("/login");
+      return;
+    }
     try {
-      const response = await axios.post("http://localhost:8080/api/bulletin/write", formData);
-      console.log("게시글 작성 성공:", response.data);
-      nav("/View"); // 성공 시 이동
+      const response = await axios.post("/api/bulletin/write", formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      nav(`/view/${response.data.id}`);
     } catch (error) {
       console.error("게시글 작성 실패:", error);
       alert("게시글 작성에 실패했습니다.");
