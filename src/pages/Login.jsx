@@ -24,9 +24,6 @@ const Login = () => {
         { username: id, password: password }
       );
 
-      // 응답 헤더 전체 출력
-      console.log("응답 헤더:", response.headers);
-
       const token = response.headers["authorization"]?.replace("Bearer ", "");
       if (!token) {
         throw new Error("토큰을 받지 못했습니다.");
