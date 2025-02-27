@@ -28,7 +28,7 @@ function App() {
         <Route path="/FindId" element={<FindId />} />
         <Route path="/FindPassword" element={<FindPassword />} />
         <Route path="/MyPage" element={<MyPage />} />
-        <Route path="/View" element={<View />} />
+        <Route path="/bulletin/view/:id" element={<View />} />
         <Route path="/Write" element={<Write />} />
         <Route path="/MessageWrite" element={<MessageWrite />} />
         <Route path="/MessageList" element={<MessageList />} />
