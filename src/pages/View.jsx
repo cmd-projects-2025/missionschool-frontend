@@ -47,16 +47,16 @@ const View = () => {
   }, [id, nav]);
 
   const handleProfileClick = () => {
-    setShowProfileModal(true);
+    setShowProfileModal(true); // 프로필 클릭 시 모달을 열기
   };
 
   const handleRatingClick = (rating) => {
-    setRating(rating);
+    setRating(rating); // 별점 클릭 시 평점 변경
   };
 
   const handleReportSubmit = () => {
     console.log("신고 사유:", reportReason);
-    setShowProfileModal(false);
+    setShowProfileModal(false); // 신고 후 모달 닫기
   };
 
   return (
@@ -90,8 +90,15 @@ const View = () => {
             onClick={() => nav("/MessageWrite")}
             type="success"
           />
+          {/* <Button
+            className="send-button"
+            text="수정하기"
+            onClick={() => nav("/Write")}
+            type="success"
+          /> */}
         </div>
 
+        {/* 프로필 모달 */}
         {showProfileModal && (
           <div className="profile-modal">
             <div className="modal-content">
@@ -101,6 +108,7 @@ const View = () => {
                 alt="프로필"
                 className="profile-modal-image"
               />
+
               <div className="modal_wrap">
                 <div className="rating">
                   <h4>별점</h4>
@@ -114,6 +122,7 @@ const View = () => {
                     </span>
                   ))}
                 </div>
+
                 <div className="report-section">
                   <h4>신고하기</h4>
                   <select
@@ -135,6 +144,7 @@ const View = () => {
                   </button>
                 </div>
               </div>
+              
               <button
                 className="close-modal"
                 onClick={() => setShowProfileModal(false)}
