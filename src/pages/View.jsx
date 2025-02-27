@@ -1,21 +1,22 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "../api/axiosInstance";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { getProfileImage } from "../util/get-profile-image";
 import "./css/View.css";
 
-import { getProfileImage } from "../util/get-profile-image";
-
 const View = () => {
+  const nav = useNavigate();
+  const { id } = useParams();
+
   const [title, setTitle] = useState("게시글 제목");
   const [profileId, setProfileId] = useState(1);
   const [rating, setRating] = useState(3);
   const [reportReason, setReportReason] = useState("");
-  const [content, setContent] = useState(
-    "게시글 내용: 여기에 글 내용이 들어갑니다."
-  );
-  const [showProfileModal, setShowProfileModal] = useState(false); // 프로필 모달 상태
+  const [content, setContent] = useState("게시글 내용: 여기에 글 내용이 들어갑니다.");
+  const [showProfileModal, setShowProfileModal] = useState(false);
 
   const reportOptions = [
     "낚시/놀람/도배",
@@ -28,19 +29,34 @@ const View = () => {
     "불법촬영물 등의 유통",
   ];
 
-  const nav = useNavigate();
+  // 데이터 가져오기
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/api/bulletin/view/${id}`);
+        const post = response.data;
+        setTitle(post.title);
+        setProfileId(post.writerId);
+        setContent(post.description);
+      } catch (error) {
+        console.error("게시글 조회 실패:", error);
+        nav(-1); // 실패 시 이전 페이지로 이동
+      }
+    };
+    fetchPost();
+  }, [id, nav]);
 
   const handleProfileClick = () => {
-    setShowProfileModal(true); // 프로필 클릭 시 모달을 열기
+    setShowProfileModal(true);
   };
 
   const handleRatingClick = (rating) => {
-    setRating(rating); // 별점 클릭 시 평점 변경
+    setRating(rating);
   };
 
   const handleReportSubmit = () => {
     console.log("신고 사유:", reportReason);
-    setShowProfileModal(false); // 신고 후 모달 닫기
+    setShowProfileModal(false);
   };
 
   return (
@@ -68,22 +84,14 @@ const View = () => {
             onClick={() => nav(-1)}
             text="뒤로가기"
           />
-
           <Button
             className="send-button"
             text="쪽지 보내기"
             onClick={() => nav("/MessageWrite")}
             type="success"
           />
-          {/* <Button
-            className="send-button"
-            text="수정하기"
-            onClick={() => nav("/Write")}
-            type="success"
-          /> */}
         </div>
 
-        {/* 프로필 모달 */}
         {showProfileModal && (
           <div className="profile-modal">
             <div className="modal-content">
@@ -93,7 +101,6 @@ const View = () => {
                 alt="프로필"
                 className="profile-modal-image"
               />
-
               <div className="modal_wrap">
                 <div className="rating">
                   <h4>별점</h4>
@@ -107,7 +114,6 @@ const View = () => {
                     </span>
                   ))}
                 </div>
-
                 <div className="report-section">
                   <h4>신고하기</h4>
                   <select
@@ -129,7 +135,6 @@ const View = () => {
                   </button>
                 </div>
               </div>
-
               <button
                 className="close-modal"
                 onClick={() => setShowProfileModal(false)}
