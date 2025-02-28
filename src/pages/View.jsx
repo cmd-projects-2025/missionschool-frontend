@@ -33,7 +33,7 @@ const View = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/bulletin/view/${id}`);
+        const response = await axios.get(`/api/bulletin/view/${id}`);
         const post = response.data;
         setTitle(post.title);
         setProfileId(post.writerId);
