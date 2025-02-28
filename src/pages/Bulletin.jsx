@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "../api/axiosInstance";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -12,86 +13,37 @@ const Bulletin = () => {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("date");
   const [currentPage, setCurrentPage] = useState(1);
+  const [posts, setPosts] = useState([]);
+  const [totalPosts, setTotalPosts] = useState(0);
   const postsPerPage = 5;
 
-  const posts = [
-    {
-      id: 1,
-      profileId: 1,
-      rating: "★★★",
-      title: "첫 번째 글",
-      date: "11.09",
-      price: "3,900원",
-    },
-    {
-      id: 2,
-      profileId: 2,
-      rating: "★★",
-      title: "두 번째 글",
-      date: "11.08",
-      price: "10,000원",
-    },
-    {
-      id: 3,
-      profileId: 3,
-      rating: "★★★★",
-      title: "세 번째 글",
-      date: "10.09",
-      price: "-",
-    },
-    {
-      id: 4,
-      profileId: 4,
-      rating: "★",
-      title: "네 번째 글",
-      date: "9.23",
-      price: "-",
-    },
-    {
-      id: 5,
-      profileId: 3,
-      rating: "★",
-      title: "다섯 번째 글",
-      date: "9.23",
-      price: "-",
-    },
-    {
-      id: 6,
-      profileId: 2,
-      rating: "★",
-      title: "여섯 번째 글",
-      date: "9.23",
-      price: "-",
-    },
-    {
-      id: 7,
-      profileId: 1,
-      rating: "★",
-      title: "일곱 번째 글",
-      date: "9.23",
-      price: "-",
-    },
-  ];
-
-  const sortedPosts = [...posts].sort((a, b) => {
-    if (sortBy === "price") {
-      const priceA = parseInt(a.price.replace(",", "").replace("원", "")) || 0;
-      const priceB = parseInt(b.price.replace(",", "").replace("원", "")) || 0;
-      return priceB - priceA;
-    }
-    return new Date(b.date) - new Date(a.date);
-  });
-
-  const filteredPosts = sortedPosts.filter((post) =>
-    post.title.includes(search)
-  );
-
-  // 페이징 처리
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
-
   const nav = useNavigate();
+
+  // 백엔드 API 호출 함수
+  const fetchPosts = async () => {
+    try {
+      const response = await axios.get("/api/bulletin", {
+        params: {
+          page: currentPage - 1, // Spring은 페이지가 0부터 시작
+          size: postsPerPage,
+          sort: sortBy === "date" ? "createdAt,desc" : "price,desc", // 백엔드 정렬 기준
+          search: search || undefined,
+        },
+      });
+      setPosts(response.data.content); // 페이지에 해당하는 게시글 리스트
+      setTotalPosts(response.data.totalElements); // 전체 게시글 수
+    } catch (error) {
+      console.error("게시글 불러오기 실패:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, [currentPage, sortBy, search]); // currentPage, sortBy, search가 바뀔 때마다 호출
+
+  // 페이징 계산
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
+
   return (
     <div className="Bulletin">
       <Header />
@@ -116,11 +68,11 @@ const Bulletin = () => {
         </div>
 
         <div className="post-list">
-          {currentPosts.map((post) => (
+          {posts.map((post) => (
             <div
               key={post.id}
               className="post-card"
-              onClick={() => nav("/View")}
+              onClick={() => nav(`/bulletin/view/${post.id}`)} // 상세 페이지로 이동
             >
               <div className="post-info">
                 <img
@@ -134,8 +86,10 @@ const Bulletin = () => {
                 </div>
               </div>
               <div className="rating-container">
-                <div className="rating">{post.rating}</div>
-                <div className="date">{post.date}</div>
+                <div className="rating">{post.rating || "★"}</div>
+                <div className="date">
+                  {new Date(post.createdAt).toLocaleDateString()} {/* 날짜 포맷 */}
+                </div>
               </div>
             </div>
           ))}
@@ -143,9 +97,7 @@ const Bulletin = () => {
 
         {/* 페이지네이션 */}
         <div className="pagination">
-          {[
-            ...Array(Math.ceil(filteredPosts.length / postsPerPage)).keys(),
-          ].map((number) => (
+          {[...Array(totalPages).keys()].map((number) => (
             <button
               key={number + 1}
               onClick={() => setCurrentPage(number + 1)}
