@@ -135,3 +135,42 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.View .content-section > div {
+  display: flex;
+  justify-content: space-between;
+  color: #ccc;
+}
+.View .icon {
+  text-align: right;
+  position: relative; /* 추가 */
+}
+
+.View .icon img {
+  width: 20px;
+  cursor: pointer;
+}
+
+.View .options {
+  position: absolute;
+  top: 0;
+  right: 30px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.View .options button {
+  background-color: transparent;
+  border: none;
+  padding: 8px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.View .options button:hover {
+  background-color: #f0f0f0;
+}

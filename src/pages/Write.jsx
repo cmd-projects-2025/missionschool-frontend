@@ -24,7 +24,8 @@ const Write = () => {
       nav("/login");
       return;
     }
-    if (user && !formData.writerId) { // 한 번만 설정
+    if (user && !formData.writerId) {
+      // 한 번만 설정
       setFormData((prev) => ({
         ...prev,
         writerId: user.username || "unknown",
@@ -52,7 +53,7 @@ const Write = () => {
       const response = await axios.post("/api/bulletin/write", formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      nav(`/view/${response.data.id}`);
+      nav(`/bulletin/view/${response.data.id}`);
     } catch (error) {
       console.error("게시글 작성 실패:", error);
       alert("게시글 작성에 실패했습니다.");
@@ -65,6 +66,19 @@ const Write = () => {
       <div className="write-page">
         <h2>글쓰기</h2>
         <form className="write-form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="nickname">작성자</label>
+            <input
+              type="text"
+              id="nickname"
+              name="nickname"
+              value={formData.nickname}
+              onChange={handleChange}
+              required
+              placeholder="" // @닉네임 뜨게 어떻게 하나요?
+              /* readOnly */
+            />
+          </div>
           <div className="form-group">
             <label htmlFor="title">제목</label>
             <input

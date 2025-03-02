@@ -58,12 +58,12 @@ const Bulletin = () => {
           <Button
             onClick={() => setSortBy(sortBy === "date" ? "price" : "date")}
             text={`정렬: ${sortBy === "date" ? "날짜" : "가격"}`}
-            type="primary"
           />
           <Button
             className="write-btn"
             text="+ 글쓰기"
             onClick={() => nav("/Write")}
+            type="primary"
           />
         </div>
 
@@ -88,7 +88,8 @@ const Bulletin = () => {
               <div className="rating-container">
                 <div className="rating">{post.rating || "★"}</div>
                 <div className="date">
-                  {new Date(post.createdAt).toLocaleDateString()} {/* 날짜 포맷 */}
+                  {new Date(post.createdAt).toLocaleDateString()}{" "}
+                  {/* 날짜 포맷 */}
                 </div>
               </div>
             </div>

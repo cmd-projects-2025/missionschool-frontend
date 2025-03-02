@@ -32,6 +32,7 @@
 
 .write-form .form-group #title,
 .write-form .form-group #price,
+.write-form .form-group #nickname,
 .write-form .form-group textarea {
   width: 90%;
   padding: 10px;

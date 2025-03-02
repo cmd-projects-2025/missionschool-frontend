@@ -21,13 +21,18 @@ const MyPage = () => {
 
     const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem("jwt") || sessionStorage.getItem("jwt");
+        const token =
+          localStorage.getItem("jwt") || sessionStorage.getItem("jwt");
         const response = await axios.get("/api/user/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUserData(response.data);
       } catch (error) {
-        console.error("사용자 정보 가져오기 실패:", error.response?.status, error.message);
+        console.error(
+          "사용자 정보 가져오기 실패:",
+          error.response?.status,
+          error.message
+        );
         nav("/login");
       }
     };
@@ -38,7 +43,8 @@ const MyPage = () => {
   const handleDeleteAccount = async () => {
     if (window.confirm("정말 탈퇴하시겠습니까?")) {
       try {
-        const token = localStorage.getItem("jwt") || sessionStorage.getItem("jwt");
+        const token =
+          localStorage.getItem("jwt") || sessionStorage.getItem("jwt");
         const response = await axios.delete("/api/user/delete", {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -76,10 +82,8 @@ const MyPage = () => {
         </div>
         <div className="posts-section">
           <h3>내가 쓴 글</h3>
-          <ul className="post-list" onClick={() => nav("/Update")}>
-            <li>글 제목 1</li>
-            <li>글 제목 2</li>
-            <li>글 제목 3</li>
+          <ul className="post-list">
+            <li onClick={() => nav(`/bulletin/view/${post.id}`)}>글 제목 1</li>
           </ul>
         </div>
       </div>

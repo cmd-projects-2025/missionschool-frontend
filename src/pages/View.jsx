@@ -4,6 +4,7 @@ import axios from "../api/axiosInstance";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import icon from "../assets/icon.png";
 import { getProfileImage } from "../util/get-profile-image";
 import "./css/View.css";
 
@@ -15,8 +16,11 @@ const View = () => {
   const [profileId, setProfileId] = useState(1);
   const [rating, setRating] = useState(3);
   const [reportReason, setReportReason] = useState("");
-  const [content, setContent] = useState("게시글 내용: 여기에 글 내용이 들어갑니다.");
+  const [content, setContent] = useState(
+    "게시글 내용: 여기에 글 내용이 들어갑니다."
+  );
   const [showProfileModal, setShowProfileModal] = useState(false);
+  const [showOptions, setShowOptions] = useState(false); // 버튼 보이기 상태 추가
 
   const reportOptions = [
     "낚시/놀람/도배",
@@ -59,12 +63,35 @@ const View = () => {
     setShowProfileModal(false); // 신고 후 모달 닫기
   };
 
+  const toggleOptions = () => {
+    setShowOptions(!showOptions); // 옵션 버튼 토글
+  };
+
   return (
     <div className="View">
       <Header />
       <div className="View-container">
+        <div className="icon">
+          <img
+            src={icon}
+            alt="아이콘"
+            onClick={toggleOptions} // 아이콘 클릭 시 옵션 보이기
+          />
+          {/* 아이콘 클릭 시 표시되는 옵션들 */}
+          {showOptions && (
+            <div className="options">
+              <button onClick={() => nav("/Update")}>수정하기</button>
+              <button>삭제하기</button>
+              <button>마감하기</button>
+            </div>
+          )}
+        </div>
+
         <div className="post-header">
-          <h2>{title}</h2>
+          <div>
+            <p>작성자</p>
+            <h2>{title}</h2>
+          </div>
           <div className="profile-section" onClick={handleProfileClick}>
             <img
               src={getProfileImage(profileId)}
@@ -76,6 +103,14 @@ const View = () => {
 
         <div className="content-section">
           <p>{content}</p>
+          <p>
+            <b>가격: </b>
+            {}원
+          </p>
+          <div>
+            <p className="date">2025-00-00</p>
+            <p>조회수: </p>
+          </div>
         </div>
 
         <div className="buttons">
@@ -90,15 +125,8 @@ const View = () => {
             onClick={() => nav("/MessageWrite")}
             type="success"
           />
-          {/* <Button
-            className="send-button"
-            text="수정하기"
-            onClick={() => nav("/Write")}
-            type="success"
-          /> */}
         </div>
 
-        {/* 프로필 모달 */}
         {showProfileModal && (
           <div className="profile-modal">
             <div className="modal-content">
@@ -144,7 +172,7 @@ const View = () => {
                   </button>
                 </div>
               </div>
-              
+
               <button
                 className="close-modal"
                 onClick={() => setShowProfileModal(false)}

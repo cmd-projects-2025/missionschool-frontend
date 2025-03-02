@@ -63,7 +63,10 @@ const Hot = () => {
               <p>{post.content}</p>
               <span>{post.price}</span>
               <br />
-              <Button onClick={() => nav("/Bulletin")} text="글보기" />
+              <Button
+                onClick={() => nav(`/bulletin/view/${post.id}`)}
+                text="글보기"
+              />
             </div>
           ))}
         </motion.div>

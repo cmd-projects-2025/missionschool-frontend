@@ -26,10 +26,7 @@ body {
 .Header .header_left {
   display: flex;
   align-items: center;
-}
-
-.Header .header_left button {
-  margin-right: 5px;
+  gap: 7px;
 }
 
 .notification-container {
