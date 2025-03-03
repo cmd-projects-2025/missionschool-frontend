@@ -150,7 +150,7 @@ const Join = () => {
 
               {/* 완료 버튼 */}
               <div className="submit-container">
-                <Button type="success" className="Join-btn" text="가입하기" />
+                <Button type="success" className="Join-btn" text="다음" />
               </div>
 
               {/* 이용약관 팝업 */}
@@ -205,12 +205,11 @@ const Join = () => {
               </table>
             </div>
 
-            {/* 선택 완료 버튼 */}
             <div className="submit-container">
               <Button
                 type="success"
                 className="Join-btn"
-                text="선택 완료"
+                text="회원 가입"
                 onClick={() => nav("/Login")}
               />
             </div>
