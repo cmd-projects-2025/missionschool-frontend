@@ -77,11 +77,11 @@ const Join = () => {
     <div>
       <Header />
       <div className="Join-container">
-        {!isJoined ? (
-          <div>
-            {/* 회원가입 폼 */}
-            <h2>회원가입</h2>
-            <form onSubmit={handleJoin}>
+        <form onSubmit={handleJoin}>
+          {!isJoined ? (
+            <div>
+              {/* 회원가입 폼 */}
+              <h2>회원가입</h2>
               {/* 회원가입 정보 입력 */}
 
               <div className="input-group">
@@ -150,7 +150,7 @@ const Join = () => {
 
               {/* 완료 버튼 */}
               <div className="submit-container">
-                <Button type="success" className="Join-btn" text="다음" />
+                <Button className="Join-btn" text="다음" />
               </div>
 
               {/* 이용약관 팝업 */}
@@ -163,58 +163,58 @@ const Join = () => {
                   </div>
                 </div>
               )}
-            </form>
-          </div>
-        ) : (
-          // 회원 선택 부분
-          <div className="select-container">
-            <h2>회원 선택</h2>
-            {/* 학교 및 동네 선택 */}
-            <div className="school-select">
-              <label>학교 선택:</label>
-              <select
-                value={selectedSchool}
-                onChange={(e) => setSelectedSchool(e.target.value)}
-              >
-                <option value="">학교를 선택하세요</option>
-                {schools.map((school) => (
-                  <option key={school} value={school}>
-                    {school}
-                  </option>
-                ))}
-              </select>
             </div>
-
-            <div className="area-select">
-              <label>동네 선택:</label>
-              <table>
-                <tbody>
-                  {areas.map((area) => (
-                    <tr key={area}>
-                      <td>
-                        <input
-                          type="checkbox"
-                          checked={selectedAreas.includes(area)}
-                          onChange={() => handleAreaChange(area)}
-                        />
-                      </td>
-                      <td>{area}</td>
-                    </tr>
+          ) : (
+            // 회원 선택 부분
+            <div className="select-container">
+              <h2>회원 선택</h2>
+              {/* 학교 및 동네 선택 */}
+              <div className="school-select">
+                <label>학교 선택:</label>
+                <select
+                  value={selectedSchool}
+                  onChange={(e) => setSelectedSchool(e.target.value)}
+                >
+                  <option value="">학교를 선택하세요</option>
+                  {schools.map((school) => (
+                    <option key={school} value={school}>
+                      {school}
+                    </option>
                   ))}
-                </tbody>
-              </table>
-            </div>
+                </select>
+              </div>
 
-            <div className="submit-container">
-              <Button
-                type="success"
-                className="Join-btn"
-                text="회원 가입"
-                onClick={() => nav("/Login")}
-              />
+              <div className="area-select">
+                <label>동네 선택:</label>
+                <table>
+                  <tbody>
+                    {areas.map((area) => (
+                      <tr key={area}>
+                        <td>
+                          <input
+                            type="checkbox"
+                            checked={selectedAreas.includes(area)}
+                            onChange={() => handleAreaChange(area)}
+                          />
+                        </td>
+                        <td>{area}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="submit-container">
+                <Button
+                  type="success"
+                  className="Join-btn"
+                  text="회원 가입"
+                  onClick={() => nav("/Login")}
+                />
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </form>
       </div>
       <Footer />
     </div>
