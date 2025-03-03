@@ -12,15 +12,19 @@ const View = () => {
   const nav = useNavigate();
   const { id } = useParams();
 
-  const [title, setTitle] = useState("게시글 제목");
-  const [profileId, setProfileId] = useState(1);
+  const [title, setTitle] = useState("");
+  const [writerId, setWriterId] = useState("");
+  const [price, setPrice] = useState(0);
+  const [description, setDescription] = useState("");
+  const [bulletinState, setBulletinState] = useState(false);
+  const [viewCnt, setViewCnt] = useState(0);
+  const [createdAt, setCreatedAt] = useState(null);
+  const [updatedAt, setUpdatedAt] = useState(null);
+  const [urgent, setUrgent] = useState(false);
   const [rating, setRating] = useState(3);
   const [reportReason, setReportReason] = useState("");
-  const [content, setContent] = useState(
-    "게시글 내용: 여기에 글 내용이 들어갑니다."
-  );
   const [showProfileModal, setShowProfileModal] = useState(false);
-  const [showOptions, setShowOptions] = useState(false); // 버튼 보이기 상태 추가
+  const [showOptions, setShowOptions] = useState(false);
 
   const reportOptions = [
     "낚시/놀람/도배",
@@ -33,51 +37,42 @@ const View = () => {
     "불법촬영물 등의 유통",
   ];
 
-  // 데이터 가져오기
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const response = await axios.get(`/api/bulletin/view/${id}`);
         const post = response.data;
         setTitle(post.title);
-        setProfileId(post.writerId);
-        setContent(post.description);
+        setWriterId(post.writerId);
+        setPrice(post.price);
+        setDescription(post.description);
+        setBulletinState(post.bulletinState);
+        setViewCnt(post.viewCnt);
+        setCreatedAt(post.createdAt);
+        setUpdatedAt(post.updatedAt);
+        setUrgent(post.urgent);
       } catch (error) {
         console.error("게시글 조회 실패:", error);
-        nav(-1); // 실패 시 이전 페이지로 이동
+        nav(-1);
       }
     };
     fetchPost();
   }, [id, nav]);
 
-  const handleProfileClick = () => {
-    setShowProfileModal(true); // 프로필 클릭 시 모달을 열기
-  };
-
-  const handleRatingClick = (rating) => {
-    setRating(rating); // 별점 클릭 시 평점 변경
-  };
-
+  const handleProfileClick = () => setShowProfileModal(true);
+  const handleRatingClick = (rating) => setRating(rating);
   const handleReportSubmit = () => {
     console.log("신고 사유:", reportReason);
-    setShowProfileModal(false); // 신고 후 모달 닫기
+    setShowProfileModal(false);
   };
-
-  const toggleOptions = () => {
-    setShowOptions(!showOptions); // 옵션 버튼 토글
-  };
+  const toggleOptions = () => setShowOptions(!showOptions);
 
   return (
     <div className="View">
       <Header />
       <div className="View-container">
         <div className="icon">
-          <img
-            src={icon}
-            alt="아이콘"
-            onClick={toggleOptions} // 아이콘 클릭 시 옵션 보이기
-          />
-          {/* 아이콘 클릭 시 표시되는 옵션들 */}
+          <img src={icon} alt="아이콘" onClick={toggleOptions} />
           {showOptions && (
             <div className="options">
               <button onClick={() => nav("/Update")}>수정하기</button>
@@ -89,12 +84,11 @@ const View = () => {
 
         <div className="post-header">
           <div>
-            <p>작성자</p>
-            <h2>{title}</h2>
+            <p>작성자: {writerId}</p>
           </div>
           <div className="profile-section" onClick={handleProfileClick}>
             <img
-              src={getProfileImage(profileId)}
+              src={getProfileImage(writerId)}
               alt="프로필"
               className="profile-image"
             />
@@ -102,14 +96,14 @@ const View = () => {
         </div>
 
         <div className="content-section">
-          <p>{content}</p>
+          <p>{description}</p>
           <p>
             <b>가격: </b>
-            {}원
+            {price.toLocaleString()}원
           </p>
           <div>
-            <p className="date">2025-00-00</p>
-            <p>조회수: </p>
+            <p className="date">{new Date(createdAt).toLocaleDateString()}</p>
+            <p>조회수: {viewCnt}</p>
           </div>
         </div>
 
@@ -132,7 +126,7 @@ const View = () => {
             <div className="modal-content">
               <h3>프로필</h3>
               <img
-                src={getProfileImage(profileId)}
+                src={getProfileImage(writerId)}
                 alt="프로필"
                 className="profile-modal-image"
               />
