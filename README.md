@@ -5,8 +5,11 @@
 |<img src="https://avatars.githubusercontent.com/u/91623756?v=4" width="200" />|<img src="https://avatars.githubusercontent.com/u/129147265?v=4" width="200">|
 
 **Home 페이지**
+
 **급구** 화면 눌러서 슬라이드 기능
+
 **게시판** 페이지 5개만 나오게 하기
+
 
 
 **로그인 페이지**
